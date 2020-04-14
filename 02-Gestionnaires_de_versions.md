@@ -77,11 +77,33 @@ Les mêmes commandes, sans l'option `--global`, n'affectent que la configuration
 
 ![Zones](img/02-local_repository.png)
 
-- Créer un nouveau dépôt local dans le répertoire courant:
+- Créer un nouveau dépôt local depuis le répertoire courant:
 
 ```bash
 $ git init
 ```
+
+- cloner un dépôt existant:
+
+```bash
+$ git clone depotA/ depotB/
+```
+
+- Créer un nouveau dépôt depuis un sous-répertoire d'un premier dépôt:
+  
+  ```
+    $ git clone depotA/ depotB/
+    $ cd depotB
+    $ git filter-branch --prune-empty --subdirectory-filter <subdir> <branch>
+  ```
+  
+  > Pour enlever ce sous-répertoire de `depotA`
+  > 
+  > ```bash
+  > $ cd ../depotA
+  > $ git rm -rf <subdir>
+  > $ git commit
+  > ```
 
 - Ajouter un fichier dans la zone de transit (*staging area*):
 
@@ -121,7 +143,7 @@ Chaque branche est associée à un **label**. Celui par défaut s'appelle `maste
 $ git branch
 ```
 
-> Pour visualiser les branche distantes:
+> Pour visualiser la(les) branche(s) distante(s) :
 > 
 > ```bash
 > $ git branch -a
