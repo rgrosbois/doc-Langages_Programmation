@@ -187,3 +187,159 @@ $ git --version
 ```bash
 $ git log
 ```
+
+    - Pour afficher des informations sur la quantité et le type de modifications:
+    
+    ```bash
+    $ git log --stat
+    ```
+    
+    - Pour n'afficher que les 5 dernières soumissions:
+    
+    ```bash
+    $ git log -n 5
+    ```
+
+- Pour afficher l'état de modification d'un répertoire:
+
+```
+$ git status
+```
+
+- Afficher les différences:
+  
+  - entre 2 soumissions du dépôt:
+    
+    ```bash
+    $ git diff <id1> <id2>
+    ```
+  
+  - entre une soumission et sa parente dans le dépôt:
+    
+    ```bash
+    $ git show <id>
+    ```
+  
+  - entre le répertoire actuel et la zone de transit:
+    
+    ```bash
+    $ git diff
+    ```
+  
+  - entre la zone de transit et le dépôt:
+    
+    ```bash
+    $ git diff --staged
+    ```
+
+- Se synchroniser avec le contenu d'une certaine soumission:
+
+```bash
+$ git checkout <id>
+```
+
+> il est possible de ne taper que les 4 premiers caractères de l'identifiant pour plus de rapidité)
+
+- Pour revenir à la dernière soumission:
+
+```bash
+$ git checkout master
+```
+
+> Attention: la signification de *checkout* n'est pas la même que dans **svn**.
+
+- Pour annuler toutes les modifications dans le répertoire courant et la zone de transit:
+
+```bash
+$ git reset --hard
+```
+
+- Quelques erreurs/avertissements lors de l'utilisation:
+  
+  - *Should not be doing and octopus*: *octopus* est une stratégie de combinaison de plusieurs versions. Ce message indique que la stratégie est utilisée dans une situation non appropriée.
+  
+  - *You are in 'detached HEAD' state*: *HEAD* correspond à la dernière version. Ceci est un avertissement normal indiquant qu'on ne travaille plus sur la dernière version. 
+
+### ⁠2.4.5. GitHub
+
+![Github](img/02-github.png)
+
+C'est un [site Web](https://github.com/) permettant de partager des dépôts git. Son utilisation nécessite la création d'un compte associé à une adresse e-mail:
+
+- gratuit pour la création de dépôts publiques.
+
+- payant pour la création de dépôts privés. 
+
+> Pour s'identifier à l'aide de clés publique/privée ssh:
+> 
+> 1. Créer une clé pour l'adresse e-mail du compte:
+>    
+>    ```bash
+>    $ ssh-keygen -t rsa -b 4096 -C "snlpdo.fr@gmail.com"
+>    ```
+>    
+>    (sauvegarde dans ~/.ssh/id_rsa-snlpdo)
+> 
+> 2. Ajouter la clé privée à l'agent ssh:
+>    
+>    ```bash
+>    $ ssh-add ~/.ssh/id_rsa-snlpdo
+>    ```
+> 
+> 3. Ajouter la clé publique au compte **GitHub**: Menu *Settings → SSH keys → Add SSH key* et copier le contenu de la clé publique.
+> 
+> 4. Pour tester le bon fonctionnement:
+>    
+>    ```bash
+>    $ ssh -T git@github.com
+>    ```
+
+La synchronisation entre un dépot local et un dépôt distant sur GitHub est manuelle:
+
+- Pour copier un dépôt (local ou distant):
+  
+  ```bash
+  $ git clone <URL>.git
+  ```
+
+- Pour créer un nouveau dépôt vide sur GitHub, il faut se logger sur le site, cliquer sur le signe `+` en haut à droite, sélectionner <kbd>New Repository</kbd>, lui donner un nom puis cliquer sur <kbd>Create repository</kbd>.
+
+- Pour associer un nom de dépôt distant au dépôt local:
+  
+  ```bash
+  $ git remote add <nom_distant> https://….git
+  ```
+
+- Pour connaître le dépôt local associé:
+  
+  ```bash
+  $ git remote
+  ```
+  
+  - pour plus d'informations:
+    
+    ```bash
+    $ git remote -v
+    ```
+
+- Pour envoyer les nouvelles soumissions du dépôt local sur le dépôt distant:
+  
+  ```bash
+  $ git push <nom_distant> <branche>
+  ```
+
+- Pour récupérer les nouvelles soumissions du dépôt distant (dans une branche dédiée) et les fusionner sur le dépôt local:
+  
+  ```bash
+  $ git pull <nom_distant> <branche>
+  ```
+
+- Pour uniquement les récupérer (dans la branche dédiée):
+  
+  ```bash
+  $ git fetch <nom_distant>
+  ```
+
+- Bifurcation (*fork*): copie d'un dépôt distant de GitHub vers GitHub (avec m-à-j des statistiques et conservation d'un lien). Pour réaliser une bifurcation, il faut cliquer sur le bouton <kbd>Fork</kbd> du dépôt distant source.
+
+- Pour ajouter des collaborateurs à un dépôt distant: cliquer sur <kbd>Settings</kbd> puis <kbd>Collaborators</kbd> et ajouter les identifiants GitHub des personnes. 
