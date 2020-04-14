@@ -308,7 +308,7 @@ C'est un [site Web](https://github.com/) permettant de partager des dépôts git
 >    $ ssh-add ~/.ssh/id_rsa-snlpdo
 >    ```
 > 
-> 3. Ajouter la clé publique au compte **GitHub**: Menu *Settings → SSH keys → Add SSH key* et copier le contenu de la clé publique.
+> 3. Ajouter la clé publique au compte **GitHub**: Menu *Settings → SSH and GPG keys → New SSH key*, copier le contenu de la clé publique et cliquer sur <kbd>Add SSH key</kbd>.
 > 
 > 4. Pour tester le bon fonctionnement:
 >    
@@ -316,7 +316,7 @@ C'est un [site Web](https://github.com/) permettant de partager des dépôts git
 >    $ ssh -T git@github.com
 >    ```
 
-La synchronisation entre un dépot local et un dépôt distant sur GitHub est manuelle:
+La synchronisation entre un dépôt local et un dépôt distant sur *GitHub* est manuelle:
 
 - Pour copier un dépôt (local ou distant):
   
@@ -324,7 +324,7 @@ La synchronisation entre un dépot local et un dépôt distant sur GitHub est ma
   $ git clone <URL>.git
   ```
 
-- Pour créer un nouveau dépôt vide sur GitHub, il faut se logger sur le site, cliquer sur le signe `+` en haut à droite, sélectionner <kbd>New Repository</kbd>, lui donner un nom puis cliquer sur <kbd>Create repository</kbd>.
+- Pour créer un nouveau dépôt vide sur *GitHub*, il faut se loguer sur le site, cliquer sur le signe `+` en haut à droite, sélectionner <kbd>New Repository</kbd>, lui donner un nom puis cliquer sur <kbd>Create repository</kbd>.
 
 - Pour associer un nom de dépôt distant au dépôt local:
   
