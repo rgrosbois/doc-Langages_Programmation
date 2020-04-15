@@ -191,12 +191,40 @@ $ git merge branche2
 > - éditer les fichiers, résoudre les conflits et supprimer les marquages spécifiques.
 > 
 > - pour annuler une fusion:
->   
+>  
 >   ```bash
 >   $ git merge --abort
 >   ```
 
-### 2.4.4. Consultation
+### 2.4.4. Tag
+
+Permet d'associer un identifiant à une certaine soumission:
+
+- Ajouter un tag sur la branche courante:
+
+  ```bash
+  $ git tag -a v1.0
+  ```
+
+- Lister les tags
+
+  ```bash
+  $ git tag -l
+  ```
+
+- Cloner une soumission associée à un *tag*:
+
+  ```bash
+  $ git clone <depot> --branch <montag>
+  ```
+
+> Les *tags* ne sont pas poussés par défaut sur les dépôts distants. Pour que ce soit le cas:
+>
+> ```bash
+> $ git push --tags
+> ```
+
+### 2.4.5. Consultation
 
 - Connaître le numéro de version de `git`:
 
@@ -329,7 +357,7 @@ La synchronisation entre un dépôt local et un dépôt distant sur *GitHub* est
 - Pour associer un nom de dépôt distant au dépôt local:
   
   ```bash
-  $ git remote add <nom_distant> https://….git
+  $ git remote add origin https://….git
   ```
 
 - Pour connaître le dépôt local associé:
